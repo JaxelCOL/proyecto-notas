@@ -10,5 +10,4 @@
 
 ## Tecnologías - HTML - CSS - JavaScript - Git y GitHub 
 
-## Tecnologías - HTML - CSS - JavaScript - Git y GitHub 
 
