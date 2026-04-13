@@ -7,4 +7,8 @@
 - Clasificar niveles 
 - Menú interactivo 
 ## Integrantes - Axel Julian Cortes Zamora- Johan Camilo Peralta Tamayo
+<<<<<<< HEAD
 ## Tecnologías - HTML - CSS - JavaScript - Git y GitHub 
+=======
+## Tecnologías - HTML - CSS - JavaScript - Git y GitHub 
+>>>>>>> develop
