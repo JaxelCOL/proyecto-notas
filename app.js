@@ -1,56 +1,54 @@
-function menu() 
-    let opcion = "" ; 
+function menu() {
+    let opcion = "";
 
-    while (opcion !== "0"){
+    while (opcion !== "0") {
         opcion = prompt(
-
-            "1. ver todos/n" +
-            "2. aprobado/n" +
-            "3. reprobado/n" +
-            "4. promedio/n" +
-            "5. ordenar/n" +
-            "6. mayusculas/n" +
-            "7. clasificar notas/n" +
-            "0. salir"
-
+            "1. Ver todos\n" +
+            "2. Aprobados\n" +
+            "3. Reprobados\n" +
+            "4. Promedio\n" +
+            "5. Ordenar\n" +
+            "6. Mayúsculas\n" +
+            "7. Clasificar nota\n" +
+            "0. Salir"
         );
 
         switch (opcion) {
-            case "1"
+            case "1":
                 mostrarAprendices(aprendices);
                 break;
 
-            case "2"
+            case "2":
                 console.log(aprobados(aprendices));
-                break; 
-
-            case "3"
-                console.log(reprobado(aprendices));
                 break;
 
-            case "4"
-                console.log("Promedio:",promedio(aprendices));
+            case "3":
+                console.log(reprobados(aprendices));
                 break;
 
-            case "5"
+            case "4":
+                console.log("Promedio:", promedio(aprendices));
+                break;
+
+            case "5":
                 console.log(ordenarNotas([...aprendices]));
                 break;
 
-            case "6"
-                console.log(nombreMayusculas(aprendices));
+            case "6":
+                console.log(nombresMayus(aprendices));
                 break;
 
-            case "7"
-                let nota = parseFloat(prompt("ingresa una nota:"))
-                console.log (clasificar(nota))
+            case "7":
+                let nota = parseFloat(prompt("Ingrese una nota:"));
+                console.log(clasificar(nota));
                 break;
 
-            case "0"
-                console.log("saliendo...")
+            case "0":
+                console.log("Saliendo...");
                 break;
 
             default:
-                console.log("opciones invalidas");
-    
+                console.log("Opción inválida");
         }
     }
+}
