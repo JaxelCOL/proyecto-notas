@@ -91,7 +91,7 @@ function clasificar(nota) {
     mostrarEnPantalla("Nivel: " + nivel);
 }
 
-// MENÚ
+// MENÚ MEJORADO 
 function menu() {
     let opcion = "";
 
@@ -107,42 +107,48 @@ function menu() {
             "0. Salir"
         );
 
+        if (opcion === null) {
+            mostrarEnPantalla("Menú cancelado");
+            break;
+        }
+
         switch (opcion) {
             case "1":
                 mostrarAprendices(aprendices);
-                break;
+                return;
 
             case "2":
                 aprobados(aprendices);
-                break;
+                return;
 
             case "3":
                 reprobados(aprendices);
-                break;
+                return;
 
             case "4":
                 promedio(aprendices);
-                break;
+                return;
 
             case "5":
                 ordenarNotas([...aprendices]);
-                break;
+                return;
 
             case "6":
                 nombresMayus(aprendices);
-                break;
+                return;
 
             case "7":
                 let nota = parseFloat(prompt("Ingrese una nota:"));
                 clasificar(nota);
-                break;
+                return;
 
             case "0":
                 mostrarEnPantalla("Saliendo...");
-                break;
+                return;
 
             default:
                 mostrarEnPantalla("Opción inválida");
+                return;
         }
     }
 }
