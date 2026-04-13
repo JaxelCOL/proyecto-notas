@@ -1,3 +1,14 @@
+function nombresMayus(lista) {
+ return lista.map(a => ({
+ ...a,
+ nombre: a.nombre.toUpperCase()
+ }));
+}
+
+function ordenarNotas(lista) {
+ return lista.sort((a, b) => b.nota - a.nota);
+}
+
 function menu() {
     let opcion = "";
 
@@ -51,4 +62,24 @@ function menu() {
                 console.log("Opción inválida");
         }
     }
+}
+
+function menu() {
+ let opcion;
+ while (opcion !== "0") {
+ opcion = prompt("1.Ver todos\n2.Aprobados\n3.Salir");
+ switch (opcion) {
+ case "1":
+ mostrarAprendices(aprendices);
+ break;
+ case "2":
+ console.log(aprobados(aprendices));
+ break;
+ case "0":
+ console.log("Saliendo...");
+ break;
+ default:
+ console.log("Opcion invalida");
+ }
+ }
 }
