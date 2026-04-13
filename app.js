@@ -1,4 +1,4 @@
-// datos base
+// DATOS BASE
 const aprendices = [
     { nombre: "Ana", nota: 4.5, programa: "ADSO" },
     { nombre: "Luis", nota: 2.8, programa: "ADSO" },
@@ -7,52 +7,91 @@ const aprendices = [
     { nombre: "Sofia", nota: 5.0, programa: "Diseno Web" }
 ];
 
+// MOSTRAR EN PANTALLA
+function mostrarEnPantalla(texto) {
+    const div = document.getElementById("resultado");
+    div.innerHTML = texto;
+}
 
-function mostrarAprendices(lista) { 
-    lista.forEach(a => { 
-        console.log(a.nombre, a.nota, a.programa); 
-    }); 
-} 
+// FUNCIONES
 
-function aprobados(lista) { 
-    return lista.filter(a => a.nota >= 3.0); 
-} 
+function mostrarAprendices(lista) {
+    let salida = "";
+    lista.forEach(a => {
+        salida += `Nombre: ${a.nombre} - Nota: ${a.nota} - Programa: ${a.programa}<br>`;
+    });
+    mostrarEnPantalla(salida);
+}
 
-function reprobados(lista) { 
-    return lista.filter(a => a.nota < 3.0); 
-} 
+function aprobados(lista) {
+    let datos = lista.filter(a => a.nota >= 3.0);
+    let salida = "";
 
-function promedio(lista) { 
-    let total = lista.reduce((acc, a) => acc + a.nota, 0); 
-    return total / lista.length; 
-} 
+    datos.forEach(a => {
+        salida += `${a.nombre} - ${a.nota}<br>`;
+    });
+
+    mostrarEnPantalla(salida);
+}
+
+function reprobados(lista) {
+    let datos = lista.filter(a => a.nota < 3.0);
+    let salida = "";
+
+    datos.forEach(a => {
+        salida += `${a.nombre} - ${a.nota}<br>`;
+    });
+
+    mostrarEnPantalla(salida);
+}
+
+function promedio(lista) {
+    let total = lista.reduce((acc, a) => acc + a.nota, 0);
+    let prom = total / lista.length;
+
+    mostrarEnPantalla("Promedio: " + prom.toFixed(2));
+}
 
 function nombresMayus(lista) {
-    return lista.map(a => ({
+    let datos = lista.map(a => ({
         ...a,
         nombre: a.nombre.toUpperCase()
     }));
+
+    let salida = "";
+
+    datos.forEach(a => {
+        salida += `${a.nombre} - ${a.nota}<br>`;
+    });
+
+    mostrarEnPantalla(salida);
 }
 
 function ordenarNotas(lista) {
-    return lista.sort((a, b) => b.nota - a.nota);
-}
+    let ordenados = lista.sort((a, b) => b.nota - a.nota);
+    let salida = "";
 
+    ordenados.forEach(a => {
+        salida += `${a.nombre} - ${a.nota}<br>`;
+    });
+
+    mostrarEnPantalla(salida);
+}
 
 function clasificar(nota) {
+    let nivel = "";
+
     switch (true) {
-        case nota < 3:
-            return "Bajo";
-        case nota < 4:
-            return "Basico";
-        case nota < 4.5:
-            return "Alto";
-        default:
-            return "Superior";
+        case nota < 3: nivel = "Bajo"; break;
+        case nota < 4: nivel = "Basico"; break;
+        case nota < 4.5: nivel = "Alto"; break;
+        default: nivel = "Superior";
     }
+
+    mostrarEnPantalla("Nivel: " + nivel);
 }
 
-
+// MENÚ
 function menu() {
     let opcion = "";
 
@@ -74,36 +113,36 @@ function menu() {
                 break;
 
             case "2":
-                console.log(aprobados(aprendices));
+                aprobados(aprendices);
                 break;
 
             case "3":
-                console.log(reprobados(aprendices));
+                reprobados(aprendices);
                 break;
 
             case "4":
-                console.log("Promedio:", promedio(aprendices));
+                promedio(aprendices);
                 break;
 
             case "5":
-                console.log(ordenarNotas([...aprendices]));
+                ordenarNotas([...aprendices]);
                 break;
 
             case "6":
-                console.log(nombresMayus(aprendices));
+                nombresMayus(aprendices);
                 break;
 
             case "7":
                 let nota = parseFloat(prompt("Ingrese una nota:"));
-                console.log(clasificar(nota));
+                clasificar(nota);
                 break;
 
             case "0":
-                console.log("Saliendo...");
+                mostrarEnPantalla("Saliendo...");
                 break;
 
             default:
-                console.log("Opción inválida");
+                mostrarEnPantalla("Opción inválida");
         }
     }
 }
